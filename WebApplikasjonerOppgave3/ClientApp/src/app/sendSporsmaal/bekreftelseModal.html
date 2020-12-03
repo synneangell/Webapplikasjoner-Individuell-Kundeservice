@@ -1,0 +1,53 @@
+<div class="container">
+    <h1 class="overskrift">Hva lurer du på?</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-4">
+                <form [formGroup]="skjema" (ngSubmit)="vedSubmit()">
+                    <div class="form-group">
+                        <label>Er du kunde eller administrator?</label>
+                        <div id="tilhorighet" class="dropdown">
+                            <select #valgtTilhorighet formControlName="valgtTilhorighet" class='browser-default custom-select'>
+                                <option [value]="" disabled>Velg</option>
+                                <option> Kunde </option>
+                                <option> Adminstrator </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div *ngIf="valgtTilhorighet.selectedIndex === 1">
+                            <label>Hvilket tema går spørsmålet under?</label>
+                            <select formControlName="temaer" class='browser-default custom-select'>
+                                <option [value]="" disabled>Velg</option>
+                                <option> Bestilling </option>
+                                <option> Betaling </option>
+                                <option> Avbestilling </option>
+                            </select>
+                        </div>
+                        <div *ngIf="valgtTilhorighet.selectedIndex === 2">
+                            <label>Hvilket tema går spørsmålet under?</label>
+                            <select formControlName="temaer" class='browser-default custom-select'>
+                                <option> Innlogging </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Spørsmål</label>
+                        <input class="form-control" formControlName="sporsmaal" />
+                    </div>
+                    <div class="form-group">
+                        <label>Epost</label>
+                        <input class="form-control" formControlName="epost" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" [disabled]="!skjema.valid || sendtInn" class="btn btn-primary">Send inn spørsmål</button>
+                    </div>
+                    <div *ngIf="sendtInn">
+                        <p>Spørsmålet ditt er sendt inn.</p>
+                        <p>Du mottar en epost når det er behandlet.</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

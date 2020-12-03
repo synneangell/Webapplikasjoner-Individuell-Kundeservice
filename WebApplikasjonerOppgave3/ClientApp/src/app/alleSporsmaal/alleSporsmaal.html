@@ -1,0 +1,149 @@
+    <div class="container">
+    <h1 class="overskrift">    FAQ Kunder   </h1>
+    <h5 class="underoverskrift">Hva kan vi hjelpe deg med?</h5>
+    <p>
+        <button type="button" class="btn btn-primary ml-3" (click)="bestillingIsCollapsed = !bestillingIsCollapsed"
+                [attr.aria-expanded]="!bestillingIsCollapsed" aria-controls="collapseExample">
+            Bestilling &rarr;
+        </button>
+    </p>
+    <div id="collapseExample" [ngbCollapse]="bestillingIsCollapsed">
+        <div class="card">
+            <div class="card-body">
+
+                <ngb-accordion #acc="ngbAccordion">
+                    <div *ngFor='let faq of alleKundeFaq; index as j'>
+                        <div *ngIf="faq.tema === 'Bestilling' && faq.svar !== ''">
+                            <ngb-panel title={{faq.sporsmaal}}>
+                                <ng-template ngbPanelContent>
+                                    {{faq.svar}}
+                                    <div class="stemmer">
+                                        <div class="dislikes">
+                                            <p class="antallDislikes">{{faq.dislikes}}</p>
+                                            <button class="tommelKnapp" type="button" (click)="dislike(faq.id, j); disablebutton[j]=true" [disabled]="disablebutton[j]"><img class="tommelNed" src="https://www.flaticon.com/svg/static/icons/svg/889/889220.svg" /></button>
+                                        </div>
+                                        <div class="likes">
+                                            <p class="antallLikes">{{faq.likes}}</p>
+                                            <button class="tommelKnapp" type="button" (click)="like(faq.id, j); disablebutton[j]=true" [disabled]="disablebutton[j]"><img class="tommelOpp" src="https://www.flaticon.com/svg/static/icons/svg/889/889221.svg" /></button>
+                                        </div>
+                                        <div class="feilmelding" *ngIf="disablebutton[j]">
+                                            <p>Takk for din stemme. Du kan kun stemme en gang per spørsmål.</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </ng-template>
+                            </ngb-panel>
+                        </div>
+                    </div>
+                </ngb-accordion>
+
+
+            </div>
+            </div>
+            </div>
+
+    <p>
+        <button type="button" class="btn btn-primary ml-3" (click)="betalingIsCollapsed = !betalingIsCollapsed"
+                [attr.aria-expanded]="!betalingIsCollapsed" aria-controls="collapseExample">
+            Betaling &rarr;
+        </button>
+    </p>
+    <div id="collapseExample" [ngbCollapse]="betalingIsCollapsed">
+        <div class="card">
+            <div class="card-body">
+                <div *ngFor='let faq of alleKundeFaq; index as j'>
+                    <div *ngIf="faq.tema === 'Betaling' && faq.svar !== ''">
+                        <h6>{{faq.sporsmaal}}</h6>
+                        <p>{{faq.svar}}</p>
+                        <div class="stemmer">
+                            <div class="dislikes">
+                                <p class="antallDislikes">{{faq.dislikes}}</p>
+                                <button class="tommelKnapp" type="button" (click)="dislike(faq.id, j); disablebutton[j]=true" [disabled]="disablebutton[j]"><img class="tommelNed" src="https://www.flaticon.com/svg/static/icons/svg/889/889220.svg" /></button>
+                            </div>
+                            <div class="likes">
+                                <p class="antallLikes">{{faq.likes}}</p>
+                                <button class="tommelKnapp" type="button" (click)="like(faq.id, j); disablebutton[j]=true" [disabled]="disablebutton[j]"><img class="tommelOpp" src="https://www.flaticon.com/svg/static/icons/svg/889/889221.svg" /></button>
+                            </div>
+                            <div class="feilmelding" *ngIf="disablebutton[j]">
+                                <p>Takk for din stemme. Du kan kun stemme en gang per spørsmål.</p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        <button type="button" class="btn btn-primary ml-3" (click)="avbestillingIsCollapsed = !avbestillingIsCollapsed"
+                [attr.aria-expanded]="!avbestillingIsCollapsed" aria-controls="collapseExample">
+            Avbestilling &rarr;
+        </button>
+    </p>
+    <div id="collapseExample" [ngbCollapse]="avbestillingIsCollapsed">
+        <div class="card">
+            <div class="card-body">
+                <div *ngFor='let faq of alleKundeFaq; index as j'>
+                    <div *ngIf="faq.tema === 'Avbestilling' && faq.svar !== ''">
+                        <h6>{{faq.sporsmaal}}</h6>
+                        <p>{{faq.svar}}</p>
+                        <div class="stemmer">
+                            <div class="dislikes">
+                                <p class="antallDislikes">{{faq.dislikes}}</p>
+                                <button class="tommelKnapp" type="button" (click)="dislike(faq.id, j); disablebutton[j]=true" [disabled]="disablebutton[j]"><img class="tommelNed" src="https://www.flaticon.com/svg/static/icons/svg/889/889220.svg" /></button>
+                            </div>
+                            <div class="likes">
+                                <p class="antallLikes">{{faq.likes}}</p>
+                                <button class="tommelKnapp" type="button" (click)="like(faq.id, j); disablebutton[j]=true" [disabled]="disablebutton[j]"><img class="tommelOpp" src="https://www.flaticon.com/svg/static/icons/svg/889/889221.svg" /></button>
+                            </div>
+                            <div class="feilmelding" *ngIf="disablebutton[j]">
+                                <p>Takk for din stemme. Du kan kun stemme en gang per spørsmål.</p>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        <button type="button" class="btn btn-primary ml-3" (click)="kontaktOssIsCollapsed = !kontaktOssIsCollapsed"
+                [attr.aria-expanded]="!kontaktOssIsCollapsed" aria-controls="collapseExample">
+            Kontakt oss &rarr;
+        </button>
+    </p>
+    <div id="collapseExample" [ngbCollapse]="kontaktOssIsCollapsed">
+        <div class="card">
+            <div class="card-body">
+                Finner du ikke spørsmålet du lurer på?
+                Da kan du sende inn spørsmål her:
+                <ul class="link">
+                    <li [routerLinkActive]="['link-active']">
+                        <a [routerLink]="['/sendSporsmaal']">Send inn spørsmål</a>
+                    </li>
+                </ul>
+
+                Du kan også ringe Kundeservice:<br />
+                <br />
+                Telefon: 22 31 31 50<br />
+                <br />
+                Våre telefontider:<br />
+                mandag–fredag kl. 08:00 – 19:00<br />
+                lørdag kl 09:00 - 15:00<br />
+                søndag - stengt<br />
+                <br />
+                Røde dager er Kundeservice stengt.
+                <br />
+                Husk at du, for de fleste av våre ruter, kan ringe lokal ruteopplysning 177 for informasjon om rutetider i området du befinner deg.<br />
+                <br />
+                Adresse administrasjon:<br />
+                NOR-WAY Bussekspress AS<br />
+                Karl Johans gate 16, 0154 Oslo<br />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
